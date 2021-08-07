@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "1087755901279",
+    "project_id": "buspooling-7c615",
+    "storage_bucket": "buspooling-7c615.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087755901279:android:8f67fac77b3a5f41ca3eea",
+        "android_client_info": {
+          "package_name": "com.pullmandelnorte.buspooling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087755901279-hlqra6212fr43dts1gn7fg38om7b37k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHEanAThzReTMndIjLkCioQDBi92obmuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087755901279-hlqra6212fr43dts1gn7fg38om7b37k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087755901279:android:3046ae764e3b8566ca3eea",
+        "android_client_info": {
+          "package_name": "com.pullmandelnorte.buspoolingchofer2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087755901279-hlqra6212fr43dts1gn7fg38om7b37k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHEanAThzReTMndIjLkCioQDBi92obmuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087755901279-hlqra6212fr43dts1gn7fg38om7b37k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087755901279:android:c221b9b6b841163cca3eea",
+        "android_client_info": {
+          "package_name": "com.pullmandelnorte.spence"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087755901279-hlqra6212fr43dts1gn7fg38om7b37k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHEanAThzReTMndIjLkCioQDBi92obmuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087755901279-hlqra6212fr43dts1gn7fg38om7b37k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087755901279:android:eccc70ab7a10afe0ca3eea",
+        "android_client_info": {
+          "package_name": "com.pullmandelnorte.spencechofer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087755901279-hlqra6212fr43dts1gn7fg38om7b37k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHEanAThzReTMndIjLkCioQDBi92obmuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087755901279-hlqra6212fr43dts1gn7fg38om7b37k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
