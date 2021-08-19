@@ -15,7 +15,7 @@ public class API {
      * Datos del servidor
      */
 //    private static final String URL = "http://201.217.24.113/api_reservas/";
-    private static final String URL = "http://186.16.32.139/api_reservas/";
+    private static final String URL = "http://186.16.32.139/api_nortrans/";
 
     private static Retrofit retrofit = null;
     private static Retrofit retrofit2 = null;
