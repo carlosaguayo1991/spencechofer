@@ -25,7 +25,7 @@
                 android:layout_height="85dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="30dp"
-                android:background="@color/white"
+                android:background="@color/colorfondo"
                 android:foregroundGravity="center"
                 app:srcCompat="@drawable/icono_spencer600" />
 
