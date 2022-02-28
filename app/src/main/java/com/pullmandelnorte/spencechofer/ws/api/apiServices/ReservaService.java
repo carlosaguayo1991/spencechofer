@@ -43,7 +43,8 @@ public interface ReservaService {
     Call<JsonElement> getPreguntas();
 
     @POST("conductores/funCargaCuestionario.php")
-    Call<ResponseBody> funCargaCuestionario(@Body Respuesta respuesta);
+//    Call<ResponseBody> funCargaCuestionario(@Body Respuesta respuesta);
+    Call<Mensaje> funCargaCuestionario(@Body Respuesta respuesta);
 
     @POST("conductores/funChoferesViaje.php")
     Call<Choferesviajes> funChoferesViaje(@Body ModeloViajeId modeloViaje);

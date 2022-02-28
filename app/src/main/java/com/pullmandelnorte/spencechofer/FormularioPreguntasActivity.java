@@ -10,6 +10,7 @@ import retrofit2.Response;
 
 import android.app.ProgressDialog;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.pullmandelnorte.spencechofer.adapter.FormularioAdapter;
 import com.pullmandelnorte.spencechofer.entities.Preguntas;
 import com.pullmandelnorte.spencechofer.entities.Respuesta;
+import com.pullmandelnorte.spencechofer.modelo.Mensaje;
 import com.pullmandelnorte.spencechofer.ws.api.API;
 import com.pullmandelnorte.spencechofer.ws.api.apiServices.ReservaService;
 
@@ -34,6 +36,7 @@ public class FormularioPreguntasActivity extends AppCompatActivity {
     public static FormularioAdapter formularioAdapter;
     private String idviaje;
     private String qr;
+    private String titulo;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -49,6 +52,7 @@ public class FormularioPreguntasActivity extends AppCompatActivity {
         if (bundle != null) {
             idviaje = bundle.getString("idviaje");
             qr = bundle.getString("qr");
+            titulo = bundle.getString("titulo");
         }
 
         //Crea contenedor
@@ -59,8 +63,10 @@ public class FormularioPreguntasActivity extends AppCompatActivity {
 //        //Crea ImageView y TextView
         TextView miTextView = new TextView(getApplicationContext());
 //        //Agrega propiedades al TextView.
-        miTextView.setText("Formulario");
+//        miTextView.setText("Formulario");
+        miTextView.setText(titulo);
         miTextView.setTextSize(25);
+        miTextView.setTextColor(Color.BLACK);
         miTextView.setGravity(Gravity.CENTER);
 
 //        //Agrega vistas al contenedor.
@@ -167,12 +173,15 @@ public class FormularioPreguntasActivity extends AppCompatActivity {
             }
 
             ReservaService rs = API.getApi().create(ReservaService.class);
-            Call<ResponseBody> cuestionarioCall = rs.funCargaCuestionario(respuesta);
-            cuestionarioCall.enqueue(new Callback<ResponseBody>() {
+            Call<Mensaje> cuestionarioCall = rs.funCargaCuestionario(respuesta);
+            cuestionarioCall.enqueue(new Callback<Mensaje>() {
                 @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                public void onResponse(Call<Mensaje> call, Response<Mensaje> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(FormularioPreguntasActivity.this, "Formulario enviado con éxito", Toast.LENGTH_SHORT).show();
+                        if(!response.body().getMensaje().toUpperCase().equals("OK")){
+                            EscaneoActivity.resultado.setText(response.body().getMensaje());
+                        }
                         progress.dismiss();
                         finish();
                     } else {
@@ -182,7 +191,7 @@ public class FormularioPreguntasActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                public void onFailure(Call<Mensaje> call, Throwable t) {
                     Toast.makeText(FormularioPreguntasActivity.this, "Error : " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     progress.dismiss();
                 }

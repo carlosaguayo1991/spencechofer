@@ -158,7 +158,8 @@ public class ViajesFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.link:
                 StringBuffer url = new StringBuffer();
-                url.append("https://buspooling.cl/reserva/vistas/vista_viaje.php?idviaje=").append(nroviaje);
+//                url.append("https://buspooling.cl/reserva/vistas/vista_viaje.php?idviaje=").append(nroviaje);
+                url.append("http://nortrans-go.com/nortrans/vistas/vista_viaje.php?idviaje=").append(nroviaje);
                 Uri uri = Uri.parse(url.toString());
                 Intent inte = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(inte);

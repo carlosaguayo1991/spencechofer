@@ -31,7 +31,8 @@ import java.util.List;
 
 public class EscaneoActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnScanner;
-    private TextView resultado;
+//    private TextView resultado;
+    public static TextView resultado;
     private String idviaje;
     private ProgressDialog progress;
 
@@ -151,6 +152,7 @@ public class EscaneoActivity extends AppCompatActivity implements View.OnClickLi
                                         Intent intent = new Intent(EscaneoActivity.this, FormularioPreguntasActivity.class);
                                         intent.putExtra("idviaje",idviaje);
                                         intent.putExtra("qr",intentResult.getContents());
+                                        intent.putExtra("titulo", resultado.getText().toString());
                                         startActivity(intent);
                                     }else{
                                         progress.dismiss();
