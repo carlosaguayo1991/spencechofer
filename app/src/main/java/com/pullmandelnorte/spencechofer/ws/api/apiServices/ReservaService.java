@@ -6,6 +6,8 @@ import com.pullmandelnorte.spencechofer.entities.Respuesta;
 import com.pullmandelnorte.spencechofer.entities.RespuestaChofer;
 import com.pullmandelnorte.spencechofer.entities.Viaje;
 import com.pullmandelnorte.spencechofer.modelo.Cedula;
+import com.pullmandelnorte.spencechofer.modelo.Empleado;
+import com.pullmandelnorte.spencechofer.modelo.EmpleadoCarga;
 import com.pullmandelnorte.spencechofer.modelo.Mensaje;
 import com.pullmandelnorte.spencechofer.modelo.ModeloIntermedio;
 import com.pullmandelnorte.spencechofer.modelo.ModeloQr;
@@ -60,5 +62,12 @@ public interface ReservaService {
 
     @POST("conductores/funCargaCuestionarioAux.php")
     Call<ResponseBody> funCargaCuestionarioAux(@Body RespuestaChofer respuesta);
+
+    @POST("trabajadores/funConsultaEmpleado.php")
+    Call<Empleado> funConsultaEmpleado(@Body Cedula cedula);
+
+    @POST("reservas/funCargarSubidaManual.php")
+    Call<Mensaje> funCargarSubidaManual(@Body EmpleadoCarga empleadoCarga);
+
 
 }

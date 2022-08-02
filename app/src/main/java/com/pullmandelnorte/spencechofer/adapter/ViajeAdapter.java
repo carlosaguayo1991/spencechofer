@@ -5,16 +5,23 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.StrictMode;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pullmandelnorte.spencechofer.BuscarViaje;
+import com.pullmandelnorte.spencechofer.CargaManualActivity;
 import com.pullmandelnorte.spencechofer.EncuestaChoferes;
 import com.pullmandelnorte.spencechofer.EscaneoActivity;
 import com.pullmandelnorte.spencechofer.IntermedioActivity;
@@ -46,6 +53,7 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
     public boolean iniciar;
     public ReservaService reservaService;
     public boolean encuestaRealizada;
+
 
     public ViajeAdapter(@NonNull Context context, List<Viaje> items, boolean iniciar) {
         super(context, 0, items);
@@ -84,6 +92,11 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
                 Intent intent = new Intent(mContext, EscaneoActivity.class);
                 intent.putExtra("idviaje", items.get(position).getNroViaje());
                 mContext.startActivity(intent);
+                break;
+            case R.id.manual:
+                Intent intentManual = new Intent(mContext, CargaManualActivity.class);
+                intentManual.putExtra("idviaje", items.get(position).getNroViaje());
+                mContext.startActivity(intentManual);
                 break;
             case R.id.aceptar:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
@@ -307,6 +320,7 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
         public TextView finalizar;
         public TextView intermedio;
         public TextView codigoqr;
+        public TextView manual;
     }
 
     @NonNull
@@ -356,6 +370,9 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
             holder.codigoqr = (TextView) convertView
                     .findViewById(R.id.qr);
             holder.codigoqr.setOnClickListener(this);
+            holder.manual = (TextView) convertView
+                    .findViewById(R.id.manual);
+            holder.manual.setOnClickListener(this);
 //            holder.image.setOnClickListener(this);
             convertView.setTag(holder);
         } else {
@@ -365,11 +382,13 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
             holder.finalizar.setVisibility(View.GONE);
             holder.intermedio.setVisibility(View.GONE);
             holder.codigoqr.setVisibility(View.GONE);
+            holder.manual.setVisibility(View.GONE);
             holder.aceptar.setVisibility(View.VISIBLE);
         } else {
             holder.finalizar.setVisibility(View.VISIBLE);
             holder.intermedio.setVisibility(View.VISIBLE);
             holder.codigoqr.setVisibility(View.VISIBLE);
+            holder.manual.setVisibility(View.VISIBLE);
             holder.aceptar.setVisibility(View.GONE);
         }
 
@@ -377,6 +396,7 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
         holder.intermedio.setTag(position);
         holder.finalizar.setTag(position);
         holder.codigoqr.setTag(position);
+        holder.manual.setTag(position);
 
         holder.nroviaje.setText("NRO. VIAJE : " + items.get(position).getNroViaje());
         holder.ruta.setText("RUTA : " + items.get(position).getRuta());
@@ -429,4 +449,5 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
         });
 
     }
+
 }

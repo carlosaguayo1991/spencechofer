@@ -11,11 +11,15 @@
         android:roundIcon="@mipmap/icono_spence"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.pullmandelnorte.spencechofer.FormularioChoferesActivity"
+        <activity android:name=".CargaManualActivity"
+            android:configChanges="screenSize|orientation"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".FormularioChoferesActivity"
             android:configChanges="screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pullmandelnorte.spencechofer.EncuestaChoferes"
+            android:name=".EncuestaChoferes"
             android:configChanges="screenSize|orientation"
             android:label="@string/title_activity_encuesta_choferes"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -24,26 +28,26 @@
                app to run.
         -->
         <activity
-            android:name="com.pullmandelnorte.spencechofer.FormularioPreguntasActivity"
+            android:name=".FormularioPreguntasActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pullmandelnorte.spencechofer.IntermedioActivity"
+            android:name=".IntermedioActivity"
             android:configChanges="screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pullmandelnorte.spencechofer.BuscarViaje"
+            android:name=".BuscarViaje"
             android:configChanges="screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pullmandelnorte.spencechofer.EscaneoActivity"
+            android:name=".EscaneoActivity"
             android:configChanges="screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pullmandelnorte.spencechofer.RegistrarUsuario"
+            android:name=".RegistrarUsuario"
             android:configChanges="screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pullmandelnorte.spencechofer.Login"
+            android:name=".Login"
             android:configChanges="screenSize|orientation"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -53,7 +57,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pullmandelnorte.spencechofer.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- <meta-data -->
@@ -72,12 +76,11 @@
             android:name="QUERY_LOG"
             android:value="true" />
     </application>
-
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>
