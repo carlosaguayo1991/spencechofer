@@ -111,38 +111,39 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
                         progressIniciar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                         progressIniciar.show();
                         //verificar si las encuesta ya fueron realizadas para ese viaje
-                        List<Choferesviajes> encuesta = Choferesviajes.find(Choferesviajes.class, "IDVIAJE = ? ",items.get(position).getNroViaje());
-                        if (encuesta != null && encuesta.size() > 0) {
-                            encuestaRealizada = true;
-                            if(encuesta.get(0).getCondicion_chofer_principal().equals("true")){
-                                if (encuesta.get(0).isRealizado_principal()) {
-                                    encuestaRealizada = true;
-                                }else {
-                                    encuestaRealizada = false;
-                                }
-                            };
-                            if(encuestaRealizada){
-                                if(encuesta.get(0).getCondicion_chofer_secundaria().equals("true")){
-                                    if (encuesta.get(0).isRealizado_secundario()) {
-                                        encuestaRealizada = true;
-                                    }else {
-                                        encuestaRealizada = false;
-                                    }
-                                };
-                            }
-                            if(encuestaRealizada){
-                                if(encuesta.get(0).getCondicion_auxiliar().equals("true")){
-                                    if (encuesta.get(0).isRealizado_auxiliar()) {
-                                        encuestaRealizada = true;
-                                    }else {
-                                        encuestaRealizada = false;
-                                    }
-                                };
-                            }
-
-                        } else {
-                            encuestaRealizada = false;
-                        }
+//                        List<Choferesviajes> encuesta = Choferesviajes.find(Choferesviajes.class, "IDVIAJE = ? ",items.get(position).getNroViaje());
+//                        if (encuesta != null && encuesta.size() > 0) {
+//                            encuestaRealizada = true;
+//                            if(encuesta.get(0).getCondicion_chofer_principal().equals("true")){
+//                                if (encuesta.get(0).isRealizado_principal()) {
+//                                    encuestaRealizada = true;
+//                                }else {
+//                                    encuestaRealizada = false;
+//                                }
+//                            };
+//                            if(encuestaRealizada){
+//                                if(encuesta.get(0).getCondicion_chofer_secundaria().equals("true")){
+//                                    if (encuesta.get(0).isRealizado_secundario()) {
+//                                        encuestaRealizada = true;
+//                                    }else {
+//                                        encuestaRealizada = false;
+//                                    }
+//                                };
+//                            }
+//                            if(encuestaRealizada){
+//                                if(encuesta.get(0).getCondicion_auxiliar().equals("true")){
+//                                    if (encuesta.get(0).isRealizado_auxiliar()) {
+//                                        encuestaRealizada = true;
+//                                    }else {
+//                                        encuestaRealizada = false;
+//                                    }
+//                                };
+//                            }
+//
+//                        } else {
+//                            encuestaRealizada = false;
+//                        }
+                        encuestaRealizada = true;
                         if (encuestaRealizada) {
                             progressIniciar.dismiss();
                             Choferesviajes.deleteAll(Choferesviajes.class);

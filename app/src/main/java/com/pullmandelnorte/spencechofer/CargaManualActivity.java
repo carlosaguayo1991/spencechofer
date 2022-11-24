@@ -73,7 +73,7 @@ public class CargaManualActivity extends AppCompatActivity {
                                 nombrecompleto.setText(response.body().getNombre_completo());
                                 Toast.makeText(CargaManualActivity.this,"Ingrese los siguientes datos",Toast.LENGTH_SHORT).show();
                                 layout_asiento.setVisibility(LinearLayout.VISIBLE);
-                                layout_temperatura.setVisibility(LinearLayout.VISIBLE);
+//                                layout_temperatura.setVisibility(LinearLayout.VISIBLE);
                                 registrar.setVisibility(LinearLayout.VISIBLE);
                                 dialog2.dismiss();
                             }else{
@@ -97,13 +97,15 @@ public class CargaManualActivity extends AppCompatActivity {
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!asiento.getText().toString().equals("") && !temperatura.getText().toString().equals("") ){
+//                if(!asiento.getText().toString().equals("") && !temperatura.getText().toString().equals("") ){
+                if(!asiento.getText().toString().equals("")){
                     setProgressDialog();
                     EmpleadoCarga empleadoCarga = new EmpleadoCarga();
                     empleadoCarga.setCedula(cedula.getText().toString());
                     empleadoCarga.setIdviaje(idviaje);
                     empleadoCarga.setAsiento(asiento.getText().toString());
-                    empleadoCarga.setTemperatura(temperatura.getText().toString());
+//                    empleadoCarga.setTemperatura(temperatura.getText().toString());
+                    empleadoCarga.setTemperatura("");
                     ReservaService reservaService = API.getApi().create(ReservaService.class);
                     Call<Mensaje> resCall = reservaService.funCargarSubidaManual(empleadoCarga);
                     resCall.enqueue(new Callback<Mensaje>() {
