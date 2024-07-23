@@ -170,31 +170,32 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="2">
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:gravity="right|bottom"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                android:layout_margin="5dp">
                 <TextView
                     android:id="@+id/qr"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
+
                     android:layout_weight="0"
                     android:background="@drawable/shape_button"
                     android:gravity="center"
                     android:minWidth="64dp"
                     android:minHeight="36dp"
                     android:padding="10dp"
-                    android:text="CODIGO QR"
+                    android:text="LECTURAS"
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
 
@@ -202,14 +203,11 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                android:layout_margin="5dp">
                 <TextView
                     android:id="@+id/intermedios"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
                     android:layout_weight="0"
                     android:background="@drawable/shape_button"
                     android:gravity="center"
@@ -220,19 +218,22 @@
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
             </LinearLayout>
-
-
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                android:layout_margin = "5dp">
                 <TextView
                     android:id="@+id/finalizar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
                     android:layout_weight="0"
                     android:background="@drawable/shape_button"
                     android:gravity="center"
@@ -247,14 +248,11 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                android:layout_margin = "5dp">
                 <TextView
                     android:id="@+id/aceptar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
                     android:layout_weight="0"
                     android:background="@drawable/shape_button"
                     android:gravity="center"
@@ -265,31 +263,14 @@
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
             </LinearLayout>
-
-
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:gravity="center"
-            android:orientation="horizontal">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp">
+                android:layout_margin = "5dp">
                 <TextView
                     android:id="@+id/manual"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
                     android:layout_weight="0"
                     android:background="@drawable/shape_button"
                     android:gravity="center"
@@ -302,6 +283,134 @@
 
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="0"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal">-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="5dp">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/qr"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:layout_weight="0"-->
+<!--                    android:background="@drawable/shape_button"-->
+<!--                    android:gravity="center"-->
+<!--                    android:minWidth="64dp"-->
+<!--                    android:minHeight="36dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="CODIGO QR"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="10sp" />-->
+
+<!--            </LinearLayout>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin="5dp">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/intermedios"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0"-->
+<!--                    android:background="@drawable/shape_button"-->
+<!--                    android:gravity="center"-->
+<!--                    android:minWidth="64dp"-->
+<!--                    android:minHeight="36dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="INTERMEDIOS"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="10sp" />-->
+<!--            </LinearLayout>-->
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin = "5dp">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/finalizar"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="0"-->
+<!--                    android:background="@drawable/shape_button"-->
+<!--                    android:gravity="center"-->
+<!--                    android:minWidth="64dp"-->
+<!--                    android:minHeight="36dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="FINALIZAR"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="10sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_margin = "5dp">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/aceptar"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_weight="0"-->
+<!--                    android:background="@drawable/shape_button"-->
+<!--                    android:gravity="center"-->
+<!--                    android:minWidth="64dp"-->
+<!--                    android:minHeight="36dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="INICIAR"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="10sp" />-->
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingTop="10dp">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="0"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal">-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_marginEnd="10dp">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/manual"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_weight="0"-->
+<!--                    android:background="@drawable/shape_button"-->
+<!--                    android:gravity="center"-->
+<!--                    android:minWidth="64dp"-->
+<!--                    android:minHeight="36dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text="CARGA MANUAL"-->
+<!--                    android:textColor="@android:color/white"-->
+<!--                    android:textSize="14sp" />-->
+
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
 
 </LinearLayout>

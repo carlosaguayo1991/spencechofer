@@ -13,12 +13,17 @@
     <string name="menu_principal">Menú Principal</string>
     <string name="menu_actualizar_usuario">Actualizar Usuario</string>
     <string name="menu_lectura_qr">Lectura QR</string>
+    <string name="google_maps_key">google_maps_key</string>
 
     <string name="home_second">Home Second</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_encuesta_choferes">EncuestaChoferes</string>
+    <string name="lorem_ipsum_short">Permita que la aplicación NortransGo Conductor acceda a la ubicación de este dispositivo,
+        para tener un informe e historial del recorrido realizado en el día, incluso cuando la aplicación esta cerrada o no está en uso.
+        Esta aplicación recopila datos de ubicación en segundo plano para cumplir con la funcionalidad completa del rastreo,
+        en el caso de omitir el permiso de ubicación, las funcionalidades del rastreo en tiempo real no se podran utilizar</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

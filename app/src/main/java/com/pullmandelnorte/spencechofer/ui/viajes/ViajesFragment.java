@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ import com.pullmandelnorte.spencechofer.BuscarViaje;
 import com.pullmandelnorte.spencechofer.R;
 import com.pullmandelnorte.spencechofer.adapter.ViajeAdapter;
 import com.pullmandelnorte.spencechofer.entities.Viaje;
+import com.pullmandelnorte.spencechofer.service.GPSService;
 import com.pullmandelnorte.spencechofer.utils.Contenido;
 
 import java.util.List;
@@ -97,6 +99,9 @@ public class ViajesFragment extends Fragment implements View.OnClickListener {
         progress.setCancelable(false);
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.show();
+        //limpiar tabla viajes para volver a cargar
+        Viaje.deleteAll(Viaje.class);
+
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -107,6 +112,17 @@ public class ViajesFragment extends Fragment implements View.OnClickListener {
                     nomina.setEnabled(true);
                     nomina.setVisibility(View.VISIBLE);
                     nroviaje = listaviajeiniciado.get(0).getNroViaje();
+                    //cargar en la base de datos
+                    Viaje v = new Viaje();
+                    v.setNroViaje(nroviaje);
+                    v.save();
+
+                    Intent intent = new Intent(view.getContext(), GPSService.class);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        view.getContext().startForegroundService(intent);
+                    }else{
+                        view.getContext().startService(intent);
+                    }
                 }else{
                     buscar.setEnabled(true);
                     buscar.setVisibility(View.VISIBLE);

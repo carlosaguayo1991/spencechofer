@@ -10,9 +10,11 @@ import com.pullmandelnorte.spencechofer.modelo.Empleado;
 import com.pullmandelnorte.spencechofer.modelo.EmpleadoCarga;
 import com.pullmandelnorte.spencechofer.modelo.Mensaje;
 import com.pullmandelnorte.spencechofer.modelo.ModeloIntermedio;
+import com.pullmandelnorte.spencechofer.modelo.ModeloLectura;
 import com.pullmandelnorte.spencechofer.modelo.ModeloQr;
 import com.pullmandelnorte.spencechofer.modelo.ModeloViaje;
 import com.pullmandelnorte.spencechofer.modelo.ModeloViajeId;
+import com.pullmandelnorte.spencechofer.modelo.TrackingModel;
 
 import java.util.List;
 
@@ -69,5 +71,10 @@ public interface ReservaService {
     @POST("reservas/funCargarSubidaManual.php")
     Call<Mensaje> funCargarSubidaManual(@Body EmpleadoCarga empleadoCarga);
 
+    @POST("transpence/funLectura.php")
+    Call<Mensaje> funLectura(@Body ModeloLectura modeloLectura);
+
+    @POST("reservas/funCargarUbicacion.php")
+    Call<ResponseBody> funCargarUbicacion(@Body TrackingModel trackingModel);
 
 }

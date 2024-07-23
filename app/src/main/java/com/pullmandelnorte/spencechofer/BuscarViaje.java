@@ -75,6 +75,13 @@ public class BuscarViaje extends AppCompatActivity {
 //                        startActivity(intent);
 //                    }
 //                });
+                //cargamos el viaje
+                if(listaBuses != null && listaBuses.size() > 0) {
+                    Viaje v = new Viaje();
+                    v.setNroViaje(listaBuses.get(0).getNroViaje());
+                    v.save();
+                }
+
                 super.handleMessage(msg);
             }
         };

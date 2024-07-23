@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.StrictMode;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.pullmandelnorte.spencechofer.BuscarViaje;
 import com.pullmandelnorte.spencechofer.CargaManualActivity;
 import com.pullmandelnorte.spencechofer.EncuestaChoferes;
 import com.pullmandelnorte.spencechofer.EscaneoActivity;
+import com.pullmandelnorte.spencechofer.EscaneoSeleccionActivity;
 import com.pullmandelnorte.spencechofer.IntermedioActivity;
 import com.pullmandelnorte.spencechofer.R;
 import com.pullmandelnorte.spencechofer.entities.Choferesviajes;
@@ -31,6 +33,7 @@ import com.pullmandelnorte.spencechofer.entities.Viaje;
 import com.pullmandelnorte.spencechofer.modelo.Mensaje;
 import com.pullmandelnorte.spencechofer.modelo.ModeloViaje;
 import com.pullmandelnorte.spencechofer.modelo.ModeloViajeId;
+import com.pullmandelnorte.spencechofer.service.GPSService;
 import com.pullmandelnorte.spencechofer.ui.viajes.ViajesFragment;
 import com.pullmandelnorte.spencechofer.utils.Contenido;
 import com.pullmandelnorte.spencechofer.ws.api.API;
@@ -89,7 +92,10 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
         int position = (Integer) v.getTag();
         switch (v.getId()) {
             case R.id.qr:
-                Intent intent = new Intent(mContext, EscaneoActivity.class);
+//                Intent intent = new Intent(mContext, EscaneoActivity.class);
+//                intent.putExtra("idviaje", items.get(position).getNroViaje());
+//                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, EscaneoSeleccionActivity.class);
                 intent.putExtra("idviaje", items.get(position).getNroViaje());
                 mContext.startActivity(intent);
                 break;
@@ -110,39 +116,6 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
                         progressIniciar.setCancelable(false);
                         progressIniciar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                         progressIniciar.show();
-                        //verificar si las encuesta ya fueron realizadas para ese viaje
-//                        List<Choferesviajes> encuesta = Choferesviajes.find(Choferesviajes.class, "IDVIAJE = ? ",items.get(position).getNroViaje());
-//                        if (encuesta != null && encuesta.size() > 0) {
-//                            encuestaRealizada = true;
-//                            if(encuesta.get(0).getCondicion_chofer_principal().equals("true")){
-//                                if (encuesta.get(0).isRealizado_principal()) {
-//                                    encuestaRealizada = true;
-//                                }else {
-//                                    encuestaRealizada = false;
-//                                }
-//                            };
-//                            if(encuestaRealizada){
-//                                if(encuesta.get(0).getCondicion_chofer_secundaria().equals("true")){
-//                                    if (encuesta.get(0).isRealizado_secundario()) {
-//                                        encuestaRealizada = true;
-//                                    }else {
-//                                        encuestaRealizada = false;
-//                                    }
-//                                };
-//                            }
-//                            if(encuestaRealizada){
-//                                if(encuesta.get(0).getCondicion_auxiliar().equals("true")){
-//                                    if (encuesta.get(0).isRealizado_auxiliar()) {
-//                                        encuestaRealizada = true;
-//                                    }else {
-//                                        encuestaRealizada = false;
-//                                    }
-//                                };
-//                            }
-//
-//                        } else {
-//                            encuestaRealizada = false;
-//                        }
                         encuestaRealizada = true;
                         if (encuestaRealizada) {
                             progressIniciar.dismiss();
@@ -214,30 +187,6 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
                             });
                         }
 
-
-//                        ModeloViaje viaje = new ModeloViaje(items.get(position).getNroViaje());
-//                        ReservaService reservaService = API.getApi().create(ReservaService.class);
-//                        Call<Mensaje> reservaServiceCall = reservaService.iniciarviaje(viaje);
-//                        reservaServiceCall.enqueue(new Callback<Mensaje>() {
-//                            @Override
-//                            public void onResponse(Call<Mensaje> call, Response<Mensaje> response) {
-//                                if (response.isSuccessful()) {
-//                                    progressIniciar.dismiss();
-//                                    ViajesFragment.buscar.setEnabled(false);
-//                                    ViajesFragment.buscar.setVisibility(View.GONE);
-//                                    ViajesFragment.nomina.setEnabled(true);
-//                                    ViajesFragment.nomina.setVisibility(View.VISIBLE);
-//                                    ViajesFragment.viajeAdapterAsignado.updateData(Contenido.getViajeAsignado(mContext));
-//                                    BuscarViaje.actividadBuscarViaje.finish();
-//                                    Toast.makeText(mContext, response.body().getMensaje(), Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onFailure(Call<Mensaje> call, Throwable t) {
-//                                Toast.makeText(mContext, t.getMessage(), Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
                     }
                 });
                 dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -282,6 +231,9 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
                                     ViajesFragment.nomina.setVisibility(View.GONE);
                                     ViajesFragment.viajeAdapterAsignado.updateData(Contenido.getViajeAsignado(mContext));
                                     Toast.makeText(mContext, response.body().getMensaje(), Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(mContext, GPSService.class);
+                                    mContext.stopService(intent);
+
                                 }
                             }
 
@@ -440,6 +392,15 @@ public class ViajeAdapter extends ArrayAdapter<Viaje> implements View.OnClickLis
                     ViajesFragment.viajeAdapterAsignado.updateData(Contenido.getViajeAsignado(context));
                     BuscarViaje.actividadBuscarViaje.finish();
                     Toast.makeText(context, response.body().getMensaje(), Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(context, GPSService.class);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        context.startForegroundService(intent);
+                    }else{
+                        context.startService(intent);
+                    }
+
+
                 }
             }
 

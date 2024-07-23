@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pullmandelnorte.spencechofer">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +25,26 @@
         android:roundIcon="@mipmap/icono_spence"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CargaManualActivity"
+        <activity
+            android:name=".ConfiguracionPermisosActivity"
             android:configChanges="screenSize|orientation"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" >
+<!--            <meta-data-->
+<!--                android:name="android.app.lib_name"-->
+<!--                android:value="" />-->
+        </activity>
+        <activity
+            android:name=".EscaneoInternoActivity"
+            android:configChanges="screenSize|orientation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EscaneoSeleccionActivity"
+            android:configChanges="screenSize|orientation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CargaManualActivity"
+            android:configChanges="screenSize|orientation"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".FormularioChoferesActivity"
             android:configChanges="screenSize|orientation"
@@ -23,13 +54,13 @@
             android:configChanges="screenSize|orientation"
             android:label="@string/title_activity_encuesta_choferes"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FormularioPreguntasActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
-        <activity
-            android:name=".FormularioPreguntasActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".IntermedioActivity"
             android:configChanges="screenSize|orientation"
@@ -49,9 +80,8 @@
         <activity
             android:name=".Login"
             android:configChanges="screenSize|orientation"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,27 +92,32 @@
             android:name=".MainActivity"
             android:configChanges="screenSize|orientation"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" /> <!-- <meta-data -->
-        <!-- android:name="com.google.android.wearable.standalone" -->
-        <!-- android:value="true" /> -->
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="com.pullmandelnorte.spencechofer.entities" />
+            android:value="com.pullmandelnorte.spencechofer.entities" /> <!-- <meta-data -->
+        <!-- android:name="com.google.android.wearable.standalone" -->
+        <!-- android:value="true" /> -->
         <meta-data
             android:name="DATABASE"
             android:value="spencechofer.db" />
         <meta-data
             android:name="VERSION"
-            android:value="5" />
+            android:value="7" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
-    </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-permission android:name="android.permission.CAMERA" />
+        <service
+            android:name=".service.GPSService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="location" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+    </application>
 
 </manifest>
